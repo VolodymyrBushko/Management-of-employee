@@ -1,0 +1,89 @@
+﻿<Window x:Class="VolodWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolodWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="Template.xaml"/>
+    </Window.Resources>
+    <Grid x:Name="mainGrid">
+        <!-- Create rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!-- Create columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!-- Name -->
+        <TextBlock Text="Name:" FontSize="30"
+                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                   Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="workerName" FontSize="30"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                 Grid.Row="0" Grid.Column="1"/>
+        <!-- Surname -->
+        <TextBlock Text="Surname:" FontSize="30"
+                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                   Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="workerSurname" FontSize="30"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                 Grid.Row="1" Grid.Column="1"/>
+        <!-- Age -->
+        <TextBlock Text="Age:" FontSize="30"
+                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                   Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="workerAge" FontSize="30"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                 Grid.Row="2" Grid.Column="1" PreviewTextInput="WorkerAge_PreviewTextInput"/>
+        <!-- List of workers (ListView) -->
+        <ListView x:Name="listWorkers" Grid.RowSpan="3" Grid.ColumnSpan="3"
+                  Grid.Row="0" Grid.Column="2" FontSize="30" Margin="30"/>
+        <!-- Button Add -->
+        <Button x:Name="workerAdd" Content="Add" FontSize="30"
+                VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                Grid.Row="3" Grid.Column="0" Click="WorkerAdd_Click"
+                Background="Green" Template="{StaticResource templateBtn}"/>
+        <!-- Button Delete -->
+        <Button x:Name="workerDelete" Content="Delete" FontSize="30"
+                VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                Grid.Row="3" Grid.Column="1" Click="WorkerDelete_Click"
+                Background="Red" Template="{StaticResource templateBtn}"/>
+        <!-- Button Edit -->
+        <Button x:Name="editWorker" Content="Edit" FontSize="30"
+                VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                Grid.Row="3" Grid.Column="2" Click="EditWorker_Click"
+                Background="Orange" Template="{StaticResource templateBtn}"/>
+        <!-- Button Styles -->
+        <Button x:Name="stylesButton" Content="Dark" FontSize="30"
+                VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                Grid.Row="3" Grid.Column="3" Click="StylesButton_Click"
+                Background="Blue" Template="{StaticResource templateBtn}"/>
+            <!-- Find (ComboBox) -->
+        <ComboBox x:Name="findWorkers" FontSize="20" IsEditable="True"
+                  Grid.Row="3" Grid.Column="4" Margin="20">
+            <!-- Show all -->
+            <ComboBoxItem x:Name="showAll" FontSize="20"
+                          Content="Show All" PreviewMouseLeftButtonDown="ShowAll_Selected"/>
+            <!-- Find by name -->
+            <ComboBoxItem x:Name="findName" FontSize="20"
+                          Content="Find by name" PreviewMouseLeftButtonDown="MakeFind"/>
+            <!-- Find by surname -->
+            <ComboBoxItem x:Name="findSurname" FontSize="20"
+                          Content="Find by surname" PreviewMouseLeftButtonDown="MakeFind"/>
+            <!-- Find by age -->
+            <ComboBoxItem x:Name="findAge" FontSize="20"
+                          Content="Find by age" PreviewMouseLeftButtonDown="MakeFind"/>
+        </ComboBox>
+    </Grid>
+</Window>
